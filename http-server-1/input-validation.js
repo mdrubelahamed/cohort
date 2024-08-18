@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const z = require("zod");
 
@@ -33,6 +31,5 @@ app.post("/validate", (req, res) => {
         msg: response,
     });
 });
-
 
 app.listen(3000);
