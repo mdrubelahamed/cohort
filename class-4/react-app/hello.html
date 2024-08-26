@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            button {
+                font-size: 1rem;
+                border-radius: 1.5rem;
+                background-color: aliceblue;
+                color: #000;
+                padding: .8rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="buttonParent"></div>
+        <script>
+            let state = {
+                count: 0,
+            };
+            function onButtonPress() {
+                state.count++;
+                buttonComponentReRender();
+            }
+
+            function buttonComponentReRender() {
+                const parent = document.querySelector(".buttonParent");
+                parent.innerHTML = "";
+                const component = buttonComponent(state.count);
+                parent.appendChild(component);
+            }
+            function buttonComponent(count) {
+                const button = document.createElement("button");
+                button.innerHTML = `Counter ${count}`;
+                button.setAttribute("onclick", "onButtonPress()");
+                return button;
+            }
+            buttonComponentReRender();
+        </script>
+    </body>
+</html>
