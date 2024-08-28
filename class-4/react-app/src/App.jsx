@@ -33,7 +33,9 @@ function App() {
         <div>
             <button onClick={addTodo}>Add a random todo</button>
             {todos.map((todo) => {
-                return <Todo title={todo.title} description={todo.description} />;
+                return (
+                    <Todo title={todo.title} description={todo.description} />
+                );
             })}
         </div>
     );
@@ -49,3 +51,4 @@ function Todo(props) {
 }
 
 export default App;
+
