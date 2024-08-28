@@ -1,18 +1,20 @@
+// 0.import
 const mongoose = require("mongoose");
-// connect the database
+
+// 1. connect to database
 const connectToDatabase = require("../mongoDB-database-connection");
 
-const Schema = mongoose.Schema;
-
-const blogPostSchema = new Schema({
+// 2. create a new schema
+const blogPostSchema = new mongoose.Schema({
     title: String,
     body: String,
     date: Date,
 });
 
+// 3. new model
 const BlogPost = mongoose.model("BlogPost", blogPostSchema);
 
-// create a new blogpost
+// 4. create a new blogpost with data
 async function createBlogPost() {
     try {
         const newPost = new BlogPost({
@@ -20,6 +22,7 @@ async function createBlogPost() {
             body: "Human will create something so they didn't need to work and they will assign their work to bunch of machine.",
             date: Date.now(),
         });
+        // 5. save the data in mongoDB
         await newPost.save();
     } catch (error) {
         console.error("ERROR:", error);
