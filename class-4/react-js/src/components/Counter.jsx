@@ -24,6 +24,7 @@ export default function Counter() {
             <h1>Current Count {count}</h1> <br />
             <button onClick={IncrementValue}>Add Value</button> <br />
             <button onClick={decrementValue}>Remove Value</button>
+            <h1>This is </h1>
         </div>
     )
 }
