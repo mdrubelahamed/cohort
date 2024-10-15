@@ -2,3 +2,7 @@ body {
     background-color: #212121;
     color: #fff;
 }
+
+button {
+    margin: .2rem;
+}

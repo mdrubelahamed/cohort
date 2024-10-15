@@ -1,10 +1,12 @@
-// react-router-dom, suspense api, lazy loading
-import { useContext } from "react"
-import "./App.css"
-import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil"
-import { countAtom } from "./store/atoms/count"
+// Use Recoil library,to manage state
 
-// wrap it for anyone that wants to use the teleprompted value inside a provider
+// Atom and selector are good enough to know how to use Recoil, but we can go also more depth by learning atomFamily and selectorFamily
+
+import "./App.css"
+import { useContext } from "react"
+import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
+import { countAtom } from "./store/atoms/Count"
+import { evenFilter } from "./store/atoms/EvenFilter"
 
 function App() {
     return (
@@ -17,10 +19,13 @@ function App() {
 }
 
 function Count() {
+    console.log("re-render count func")
+
     return (
         <div>
             <CountRenderer />
             <Buttons />
+            <EvenStatus />
         </div>
     )
 }
@@ -30,20 +35,27 @@ function CountRenderer() {
     return <div>{count}</div>
 }
 
+// if the count value is even show a paragraph to say count is even
+function EvenStatus() {
+    const status = useRecoilValue(evenFilter)
+    return <div>{status}</div>
+}
+
 function Buttons() {
-    const [count, setCount] = useRecoilState(countAtom)
+    // const [count, setCount] = useRecoilState(countAtom)
+    const setCount = useSetRecoilState(countAtom)
     return (
         <div>
             <button
                 onClick={() => {
-                    setCount(count + 1)
+                    setCount((previousCount) => previousCount + 1)
                 }}
             >
                 Incerease
             </button>
             <button
                 onClick={() => {
-                    setCount(count - 1)
+                    setCount((previousCount) => previousCount - 1)
                 }}
             >
                 Decrease
