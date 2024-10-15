@@ -16,10 +16,74 @@ useNavigate() => the hook from react-router-dom
 
 ## Context API
 => help to fix the prop drilling proble
+```jsx
+// The code to understand context-api
+import { useContext, useState } from "react"
+import "./App.css"
+import { CounterContext } from "./context"
 
+// wrap it for anyone that wants to use the teleprompted value inside a provider
+
+function App() {
+    const [count, setCount] = useState(0)
+
+    return (
+        <div>
+                {/* we gave the value to count for the CounterContext which will get used further */}
+            <CounterContext.Provider value={count}>
+                <Count count={count} setCount={setCount} />
+            </CounterContext.Provider>
+        </div>
+    )
+}
+
+function Count({ setCount }) {
+    console.log("Count re-render")
+    const count = useContext(CounterContext)
+    return (
+        <div>
+            <CountRenderer count={count} />
+            <Buttons count={count} setCount={setCount} />
+        </div>
+    )
+}
+
+function CountRenderer() {
+    const count = useContext(CounterContext)
+    return <div>{count}</div>
+}
+
+function Buttons({ setCount }) {
+    const count = useContext(CounterContext)
+
+    return (
+        <div>
+            <button
+                onClick={() => {
+                    setCount(count + 1)
+                }}
+            >
+                Incerease
+            </button>
+            <button
+                onClick={() => {
+                    setCount(count - 1)
+                }}
+            >
+                Decrease
+            </button>
+        </div>
+    )
+}
+
+export default App
+```
 
 ## createContext hook, useContext hook
 
+## Why do we use context api ?
+=> we use context api to make the code syntax look clener by fixing the prop drilling problem   
+we don't use context api to optimize re-render   
 
 ## How to use context api ?
 1. define context
@@ -50,3 +114,28 @@ export const CounterContext = createContext(0)
 
 
 ## Cons of context api
+=> doesn't optimize re-render the "Count" function in our code still got re-render without having the count variable, or use CounterContext
+
+## What is state management ?
+A cleaner way to store the state of your app 
+Until now, the cleanest thing you can do is use the Context API. 
+It lets you teleport state 
+But there are better solutions that get rid of the problems that Context Api has 
+(unnecessary re-renders)
+
+
+
+## Recoil
+Has a concept of an atom to store 
+the state 
+An atom can be defined outside the 
+component 
+Can be teleported to any component
+
+#### Things to learn in recoil  
+- RecoilRoot 
+- atom 
+- useRecoilState 
+- useRecoilValue 
+- useSetRecoilState 
+- selector
