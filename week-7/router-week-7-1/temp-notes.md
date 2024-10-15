@@ -147,3 +147,14 @@ Can be teleported to any component
 -   useRecoilValue
 -   useSetRecoilState
 -   selector
+
+## Task
+
+Build todo application with filtering logic
+todos, filter => thing needed
+2 input boxes (title, description) => atom
+button
+todos => atom
+filter (random) => atom
+selector ( the current set of todos)
+
