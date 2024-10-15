@@ -15,24 +15,13 @@ function Board({ xIsNext, squares, onPlay }) {
             return;
         }
 
-        // immutability
         const nextSquares = squares.slice();
-        if (xIsNext) {
-            nextSquares[i] = "X";
-        } else {
-            nextSquares[i] = "O";
-        }
+        nextSquares[i] = xIsNext ? "X" : "O";
         onPlay(nextSquares);
     }
 
-    // status of winner si checked here
     const winner = calculateWinner(squares);
-    let status;
-    if (winner) {
-        status = "Winner is " + winner;
-    } else {
-        status = "Player " + (xIsNext ? "X" : "O"); // status will show the winner or who's turn
-    }
+    let status = winner ? "Winner is " + winner : "Player " + (xIsNext ? "X" : "O");
 
     return (
         <>
@@ -58,7 +47,7 @@ function Board({ xIsNext, squares, onPlay }) {
 
 export default function Game() {
     const [xIsNext, setXIsNext] = useState(true);
-    const [history, setHistory] = useState([Array(9).fill(null)]); //Creating a state variable called squares, which starts off with the array [null, null, null, null, null, null, null, null, null]
+    const [history, setHistory] = useState([Array(9).fill(null)]);
     const currentSquares = history[history.length - 1];
 
     function handlePlay(nextSquares) {
@@ -67,16 +56,12 @@ export default function Game() {
     }
 
     function jumpTo(nextMove) {
-        // TODO
+        setHistory(history.slice(0, nextMove + 1));
+        setXIsNext(nextMove % 2 === 0);
     }
 
     const moves = history.map((squares, move) => {
-        let description;
-        if (move > 0) {
-            description = "Go to move #" + move;
-        } else {
-            description = "Go to game start";
-        }
+        let description = move > 0 ? "Go to move #" + move : "Go to game start";
         return (
             <li key={move}>
                 <button onClick={() => jumpTo(move)}>{description}</button>
@@ -87,7 +72,11 @@ export default function Game() {
     return (
         <div className="game">
             <div className="game-board">
-                <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
+                <Board
+                    xIsNext={xIsNext}
+                    squares={currentSquares}
+                    onPlay={handlePlay}
+                />
             </div>
             <div className="game-info">
                 <ol>{moves}</ol>
@@ -108,7 +97,11 @@ export default function Game() {
         ];
         for (let i = 0; i < lines.length; i++) {
             const [a, b, c] = lines[i];
-            if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+            if (
+                squares[a] &&
+                squares[a] === squares[b] &&
+                squares[a] === squares[c]
+            ) {
                 return squares[a];
             }
         }

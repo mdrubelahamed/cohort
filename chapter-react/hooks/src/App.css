@@ -1,0 +1,13 @@
+body {
+    color: #fff;
+    background-color: #212121;
+}
+
+button {
+    font-size: 1rem;
+    margin: .5rem;
+}
+
+input, button {
+    font-size: 1rem;
+}
