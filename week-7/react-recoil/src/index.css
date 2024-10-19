@@ -1,0 +1,129 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #212121;
+    color: #fff;
+}
+
+/* App Container */
+.app-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #1e00ff, #ff0000); /* New vibrant gradient */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Heading */
+h1 {
+    font-size: 2rem;
+    color: #fff; /* Changed to white for better contrast */
+    margin-bottom: 20px;
+}
+
+/* Input Container */
+.input-container {
+    display: flex; /* Flexbox for alignment */
+    justify-content: center; /* Center items */
+    margin-bottom: 20px; /* Space below the input */
+    outline: none;
+    border: none;
+    box-shadow: none;
+}
+
+/* AddTodo Component */
+input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 120px); /* Adjusted for button size */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none; /* Removes the default focus outline */
+    transition: border-color 0.3s; /* Transition for border color */
+}
+
+input[type="text"]:focus {
+    border-color: #50e3c2; /* Change border color on focus */
+    box-shadow: none; /* Removes the box shadow */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #2600ff;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 1rem; /* Rounded corners */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Scaling effect on hover */
+}
+
+/* Ensure button also has no outline */
+button:focus {
+    outline: none; /* Removes the default focus outline */
+}
+
+/* TodoList and TodoItem Components */
+.todo-list {
+    margin-top: 15px;
+}
+
+/* TodoItem Component */
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* More transparency */
+    border: 1px solid #444; /* Darker border for better contrast */
+    border-radius: 8px; /* Rounded corners for todo items */
+    margin-bottom: 10px;
+    margin-top: 10px;
+    transition: background-color 0.3s; /* Smooth background transition */
+    color: rgb(255, 255, 255); /* Default color */
+}
+
+.todo-item.completed {
+    color: rgb(0, 0, 0); /* Change text color to white when completed */
+    text-decoration: line-through; /* Add strikethrough effect */
+    
+}
+
+.todo-item:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Slight highlight on hover */
+}
+
+.todo-item span {
+    flex: 1;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.todo-item button {
+    padding: 8px 10px;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    background-color: #0800ff; /* Color for the complete button */
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.todo-item button:hover {
+    background-color: #371b9c; /* Darker color on hover */
+}
