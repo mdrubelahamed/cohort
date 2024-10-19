@@ -19,6 +19,7 @@ export default function Github() {
                         <img src={data.avatar_url} alt="Github profile picture" className="rounded-full border-4 mb-4 w-50 h-50" />
                         <h1 className="text-3xl font-semibold text-center text-gray-800 mb-2">@{data.login}</h1>
                         <p className="text-xl font-semibold text-center text-gray-600">Followers: {data.followers}</p>
+                        <p>{data.bio}</p>
                     </div>
                     <div className="absolute inset-0 rounded-lg border-4 border-transparent animate-rgb-moving"></div>
                 </div>
