@@ -1,0 +1,35 @@
+.container-nowrap {
+    display: flex;
+    color: white;
+    flex-wrap: nowrap;
+    width: 200px; /* Reduced width for better visibility of wrapping */
+    margin-bottom: 20px;
+}
+
+.container-wrap {
+    display: flex;
+    color: white;
+    flex-wrap: wrap;
+    width: 200px; /* Reduced width for better visibility of wrapping */
+    margin-bottom: 20px;
+}
+
+.container-wrap-reverse {
+    display: flex;
+    color: white;
+    flex-wrap: wrap-reverse;
+    width: 200px; /* Reduced width for better visibility of wrapping */
+    margin-bottom: 20px;
+}
+
+.item1, .item2, .item3, .item4 {
+    font-size: 1.5rem; /* Adjusted font size */
+    flex-basis: 90px; /* Set a fixed basis to control item width */
+    flex-grow: 1;
+    text-align: center;
+}
+
+.item1 { background-color: red; }
+.item2 { background-color: green; }
+.item3 { background-color: blue; }
+.item4 { background-color: orange; }

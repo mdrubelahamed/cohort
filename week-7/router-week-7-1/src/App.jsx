@@ -5,8 +5,8 @@
 import "./App.css"
 import { useContext } from "react"
 import { RecoilRoot, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
-import { countAtom } from "./store/atoms/Count"
-import { evenFilter } from "./store/atoms/EvenFilter"
+import { countAtom } from "./atoms/Count"
+import { evenFilter } from "./atoms/EvenFilter"
 
 function App() {
     return (
@@ -65,3 +65,6 @@ function Buttons() {
 }
 
 export default App
+
+
+
